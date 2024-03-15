@@ -15,13 +15,17 @@ public class CaseIntelligente extends Case {
     }
 
     public int nombreBombesVoisines() {
-        // a faire
-        return 0;
+        int compteur = 0;
+        for (Case voisine: this.lesVoisines) {
+            if (voisine.contientUneBombe()) {
+                compteur++;
+            }
+        }
+        return compteur;
     }
 
     @Override
     public String toString() {
-        // a faire
-        return " sfqfqsf "
+        return "Les Cases voisine"+" "this.lesVoisines;
     }
 }
