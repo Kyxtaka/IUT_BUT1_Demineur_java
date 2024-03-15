@@ -1,6 +1,4 @@
-package src;
 // import javafx.application.Application;
-
 public class Executable{
 
     public static void main(String [] args){
