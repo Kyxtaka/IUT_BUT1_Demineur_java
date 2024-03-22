@@ -1,7 +1,12 @@
 import java.util.Scanner;
 
 public class Demineur extends Plateau{
+    private int score; 
+    private boolean gameOver;
 
+    public Demineur(int nbLignes, int nbColonnes, int pourcentage) {
+        super(nbLignes,nbColonnes,pourcentage);
+    };
 
     public void affiche(){
         System.out.println("JEU DU DEMINEUR");
@@ -75,5 +80,9 @@ public class Demineur extends Plateau{
         else{
             System.out.println("Bravo !! Vous avez gagné !");
         }
+    }
+
+    public int getScore() {
+        return this.score;
     }
 }
