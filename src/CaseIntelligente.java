@@ -11,7 +11,7 @@ public class CaseIntelligente extends Case {
     }
 
     public void ajouteVoisine(Case uneCase) {
-        this.lesVoisines.add(uneCase)
+        this.lesVoisines.add(uneCase);
     }
 
     public int nombreBombesVoisines() {
@@ -26,6 +26,6 @@ public class CaseIntelligente extends Case {
 
     @Override
     public String toString() {
-        return "Les Cases voisine"+" "this.lesVoisines;
+        return "Les Cases voisine : "+this.lesVoisines;
     }
 }
