@@ -5,6 +5,7 @@ public class Executable{
         Demineur leDemineur;
         leDemineur = new Demineur(5, 5, 20);
         leDemineur.nouvellePartie();
+        leDemineur.affiche();
         
         // paramètres : nb_lignes=10, nb_colonnes = 10, pourcentage bombres = 20        
         // Application.launch(DemineurGraphique.class, "10", "10", "20");
