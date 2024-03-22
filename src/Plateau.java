@@ -1,5 +1,5 @@
 import java.util.List;
-import java.lang.invoke.CallSite;
+//import java.lang.invoke.CallSite;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -14,8 +14,10 @@ public class Plateau{
     public Plateau(int nbLignes,int nbColonnes,int pourcentage) {
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
-        this.pourcentageDeBombes = 0;
+        this.pourcentageDeBombes = pourcentage;
         this.nbBombes = 0;
+        this.creerLesCasesVides();
+        this.rendLesCasesIntelligentes();
     }
 
     private void creerLesCasesVides() {
