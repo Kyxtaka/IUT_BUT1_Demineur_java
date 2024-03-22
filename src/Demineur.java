@@ -93,4 +93,14 @@ public class Demineur extends Plateau{
     public void marquer(int x, int y) {
         super.getCase(x, y).marquer();
     }
+
+    public boolean estGagnee() {
+        // faire
+        return false;
+    }
+
+    public boolean estPerdue() {
+        return false; 
+    }
+
 }
