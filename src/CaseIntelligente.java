@@ -26,6 +26,21 @@ public class CaseIntelligente extends Case {
 
     @Override
     public String toString() {
-        return "Les Cases voisine : "+this.lesVoisines;
+        if (this.estMarquee() == false && this.estDecouverte() == false) {
+            return " ";
+        } 
+        else if (this.estMarquee()) {
+            return "?";
+        }
+        else {
+            if (this.contientUneBombe()) return "@";
+            else {
+                int nbBombes = 0;
+                for (Case uneCase: this.lesVoisines) {
+                    if (uneCase.contientUneBombe()) nbBombes++;
+                }
+                return ""+nbBombes;
+            }
+        }
     }
 }
