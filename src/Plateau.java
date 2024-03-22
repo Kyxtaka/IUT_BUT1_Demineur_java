@@ -27,7 +27,6 @@ public class Plateau{
             }
             this.lePlateau.add(ligneCasesIntelligentes);
         }
-
     }
 
     private void rendLesCasesIntelligentes() {
@@ -105,16 +104,18 @@ public class Plateau{
     }
   
     public CaseIntelligente getCase(int numLigne,int numColonne) {
-        //A faire
-        return new CaseIntelligente();
+        return this.lePlateau.get(numLigne).get(numColonne);
     } 
 
     public void poseBombe(int x, int y) {
-
+        this.lePlateau.get(y).get(x).poseBombe();
     }
 
     public void reset() {
-
+        for (int i = 0; i < this.nbLignes; i++) {
+            for (CaseIntelligente uneCase: this.lePlateau.get(i)) {
+                uneCase.reset();
+            }
+        }
     }
- 
 }
