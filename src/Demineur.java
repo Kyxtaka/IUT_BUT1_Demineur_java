@@ -100,7 +100,15 @@ public class Demineur extends Plateau{
     }
 
     public boolean estPerdue() {
+        for (int i = 0; i < super.getNbLignes(); i++) {
+            for(int k=0; k <super.getNbColonnes(); k++) {
+                if (super.getCase(i, k).contientUneBombe() && super.getCase(i, k).estMarquee()) {
+                    return true;
+                }else {
+                    return false;
+                }
+            }
+        }
         return false; 
     }
-
 }
