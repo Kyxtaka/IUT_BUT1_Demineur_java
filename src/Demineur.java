@@ -89,5 +89,8 @@ public class Demineur extends Plateau{
     public void reveler(int x, int y) {
         super.getCase(x, y).reveler();
     }
-    
+
+    public void marquer(int x, int y) {
+        super.getCase(x, y).marquer();
+    }
 }
