@@ -103,7 +103,7 @@ public class Plateau{
         }
         return nbCasesMarquees;
     }
-    
+  
     public CaseIntelligente getCase(int numLigne,int numColonne) {
         //A faire
         return new CaseIntelligente();
