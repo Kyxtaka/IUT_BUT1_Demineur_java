@@ -85,4 +85,9 @@ public class Demineur extends Plateau{
     public int getScore() {
         return this.score;
     }
+
+    public void reveler(int x, int y) {
+        super.getCase(x, y).reveler();
+    }
+    
 }
