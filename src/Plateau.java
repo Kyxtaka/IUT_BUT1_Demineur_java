@@ -20,9 +20,9 @@ public class Plateau{
 
     private void creerLesCasesVides() {
         this.lePlateau = new ArrayList<>();
-        for (int i;i<this.nbLignes; i++) {
+        for (int i = 0;i<this.nbLignes; i++) {
             List<CaseIntelligente> ligneCasesIntelligentes = new ArrayList<>();
-            for (int k;k<this.nbColonnes; k++) {
+            for (int k = 0;k<this.nbColonnes; k++) {
                 ligneCasesIntelligentes.add(new CaseIntelligente());
             }
             this.lePlateau.add(ligneCasesIntelligentes);
@@ -31,8 +31,43 @@ public class Plateau{
     }
 
     private void rendLesCasesIntelligentes() {
-        // a faire 
-        // rend les cases intelligente
+        for (int i = 0; i < this.lePlateau.size(); i++) {
+            for (int k = 0; k < this.lePlateau.get(i).size(); k++) {
+                CaseIntelligente caseActuelle =  this.lePlateau.get(i).get(k);
+                //ajout case en haut
+                if ( --i >= 0) {
+                    caseActuelle.ajouteVoisine(this.lePlateau.get(--i).get(k));
+                }
+                //ajout case en bas
+                if (++i <= this.getNbLignes()-1) {
+                    caseActuelle.ajouteVoisine(this.lePlateau.get(++i).get(k));
+                }
+                // ajoute case a gauche
+                if (--k >= 0) {
+                    caseActuelle.ajouteVoisine(this.lePlateau.get(i).get(--k));
+                }
+                //ajoute case a droite
+                if (++k <= this.getNbColonnes()-1) {
+                    caseActuelle.ajouteVoisine(this.lePlateau.get(i).get(++k));
+                }
+                // ajoute la case diagonale : en haut a gauche 
+                if (--i >= 0 && --k >= 0) {
+                    caseActuelle.ajouteVoisine(this.lePlateau.get(--i).get(--k));
+                }
+                // ajoute la case diagonale : en bas a gauche 
+                if (++i <= this.getNbLignes()-1 && --k >= 0) {
+                    caseActuelle.ajouteVoisine(this.lePlateau.get(++i).get(--k));
+                }
+                // ajoute la case diagonale : en haut a droite 
+                if (--i >= 0 && ++k <= this.getNbColonnes()-1) {
+                    caseActuelle.ajouteVoisine(this.lePlateau.get(--i).get(++k));
+                }
+                // ajoute la case diagonale : en bas a droite 
+                if (++i <= this.getNbLignes()-1 && ++k <= this.getNbColonnes()-1) {
+                    caseActuelle.ajouteVoisine(this.lePlateau.get(++i).get(--k));
+                }
+            }
+        }
     }
 
     protected void poseDesBombesAleatoirement(){
@@ -48,23 +83,25 @@ public class Plateau{
     }
 
     public int getNbLignes() {
-        // a faire
-        return 0;
+        return this.nbLignes;
     }
 
     public int getNbColonnes() {
-        //A faire
-        return 0;
+        return this.nbColonnes;
     }
 
     public int getNbTotalBombes() {
-        //A faire
-        return 0;
+        return this.nbBombes;
     }
 
     public int getNbCasesMarquees() {
-        // A faire
-        return 0;
+        int nbCasesMarquees = 0;
+        for (List<CaseIntelligente> row: this.lePlateau) {
+            for (CaseIntelligente uneCase: row) {
+                if (uneCase.estMarquee()) nbCasesMarquees++;
+            }
+        }
+        return nbCasesMarquees;
     }
     
     public CaseIntelligente getCase(int numLigne,int numColonne) {
