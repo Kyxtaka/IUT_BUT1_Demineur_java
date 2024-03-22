@@ -95,20 +95,26 @@ public class Demineur extends Plateau{
     }
 
     public boolean estGagnee() {
-        // faire
-        return false;
+        int nbCaseTotal = super.getNbLignes()*super.getNbColonnes();
+        int caseDejaDecouverte = 0;
+        for (int i = 0; i < super.getNbLignes(); i++) {
+            for(int k=0; k <super.getNbColonnes(); k++) {
+                if (super.getCase(i, k).estDecouverte()) {
+                    caseDejaDecouverte++;
+                }
+            }
+        }
+        return caseDejaDecouverte >= (nbCaseTotal-super.getNbTotalBombes());
     }
 
     public boolean estPerdue() {
         for (int i = 0; i < super.getNbLignes(); i++) {
             for(int k=0; k <super.getNbColonnes(); k++) {
                 if (super.getCase(i, k).contientUneBombe() && super.getCase(i, k).estMarquee()) {
-                    return true;
-                }else {
-                    return false;
+                    this.gameOver = true;
                 }
             }
         }
-        return false; 
+        return this.gameOver; 
     }
 }
