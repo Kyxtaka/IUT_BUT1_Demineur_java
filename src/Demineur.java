@@ -111,5 +111,4 @@ public class Demineur extends Plateau{
         }
         return false; 
     }
-
 }
