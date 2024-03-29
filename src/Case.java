@@ -1,7 +1,7 @@
 public class Case {
-    private boolean contientUneBombe;
-    private boolean estDecouverte;
-    private boolean estMarquee;
+    protected boolean contientUneBombe;
+    protected boolean estDecouverte;
+    protected boolean estMarquee;
 
     public Case() {
         this.contientUneBombe = false;
