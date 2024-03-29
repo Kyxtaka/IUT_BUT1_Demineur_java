@@ -73,6 +73,7 @@ public class Demineur extends Plateau{
             else if (action.equals("R") || action.equals("r"))
                 this.reveler(x, y);
             this.affiche();
+            System.out.println("estPerdu status : "+this.gameOver+" Bombre : "+x+", "+y+" contient une bombe : "+this.getCase(x, y).tst());
         }
         if (this.gameOver){
             System.out.println("Oh !!! Vous avez perdu !");
@@ -88,15 +89,18 @@ public class Demineur extends Plateau{
 
     public void reveler(int x, int y) {
         super.getCase(x, y).reveler();
+        this.score++;
     }
 
     public void marquer(int x, int y) {
         super.getCase(x, y).marquer();
     }
-
+    /*
+     * 
+     */
     public boolean estGagnee() {
         int nbCaseTotal = super.getNbLignes()*super.getNbColonnes();
-        int caseDejaDecouverte = 0;
+        int caseDejaDecouverte = 0 - this.getNbTotalBombes();
         for (int i = 0; i < super.getNbLignes(); i++) {
             for(int k=0; k <super.getNbColonnes(); k++) {
                 if (super.getCase(i, k).estDecouverte()) {
@@ -110,7 +114,7 @@ public class Demineur extends Plateau{
     public boolean estPerdue() {
         for (int i = 0; i < super.getNbLignes(); i++) {
             for(int k=0; k <super.getNbColonnes(); k++) {
-                if (super.getCase(i, k).contientUneBombe() && super.getCase(i, k).estMarquee()) {
+                if (super.getCase(i, k).contientUneBombe() && super.getCase(i, k).estDecouverte()) {
                     this.gameOver = true;
                 }
             }

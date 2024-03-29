@@ -43,5 +43,9 @@ public class CaseIntelligente extends Case {
             }
         }
     }
+
+    public String tst() {
+        return "tst : "+this.contientUneBombe;
+    }
     
 }
