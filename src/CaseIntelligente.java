@@ -2,12 +2,12 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class CaseIntelligente extends Case {
-
+    
     private List<Case> lesVoisines;
     
     public CaseIntelligente() {
         super();
-        this.lesVoisines = new ArrayList();
+        this.lesVoisines = new ArrayList<>();
     }
 
     public void ajouteVoisine(Case uneCase) {
@@ -23,7 +23,7 @@ public class CaseIntelligente extends Case {
         }
         return compteur;
     }
-
+ 
     @Override
     public String toString() {
         if (this.estMarquee() == false && this.estDecouverte() == false) {
@@ -43,4 +43,5 @@ public class CaseIntelligente extends Case {
             }
         }
     }
+    
 }

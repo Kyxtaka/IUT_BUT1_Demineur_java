@@ -30,8 +30,8 @@ public class Plateau{
             this.lePlateau.add(ligneCasesIntelligentes);
         }
     }
-
-    private void rendLesCasesIntelligentes() {
+    /* 
+     * private void rendLesCasesIntelligentes() {
         for (int i = 0; i < this.lePlateau.size(); i++) {
             for (int k = 0; k < this.lePlateau.get(i).size(); k++) {
                 CaseIntelligente caseActuelle =  this.lePlateau.get(i).get(k);
@@ -69,6 +69,24 @@ public class Plateau{
                 }
             }
         }
+    }
+    */
+    private void rendLesCasesIntelligentes(){
+        for (int x = 0; x < this.nbLignes; x++) {
+            for (int y=0; y<this.nbColonnes; y++){
+                for (int dx=-1; dx<2; dx++) {
+                    for (int dy =-1; dy<2;dy++){
+                        if (dx!=0 || dy !=0){
+                            try{
+                                this.getCase(x,y).ajouteVoisine(this.getCase(x+dx, y+dy));
+                            }
+                            catch(IndexOutOfBoundsException e){}
+                        }
+                    }
+                }
+            }
+        }
+
     }
 
     protected void poseDesBombesAleatoirement(){
